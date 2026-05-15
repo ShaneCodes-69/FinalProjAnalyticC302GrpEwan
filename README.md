@@ -54,6 +54,9 @@ The file was imported into Power BI Desktop for analysis and dashboard developme
 
 The original dataset contains student-level information about demographics, lifestyle habits, academic performance, stress level, and depression status.
 
+![Dataset Screenshot](image/Dataset.PNG)
+
+
 ### Dataset Summary
 
 | Item | Description |
@@ -190,39 +193,39 @@ The following DAX measures were created in Power BI.
 
 ### Total Students
 
-![Dashboard Screenshot](image/TotlStdn.PNG)
+![Total Students Screenshot](image/TotlStdn.PNG)
 
 ### Average CGPA
 
-![Dashboard Screenshot](image/AveCGPA.PNG)
+![Average CGPA Screenshot](image/AveCGPA.PNG)
 
 ### Average Sleep Hours
 
-![Dashboard Screenshot](image/AveSlleepHrs.PNG)
+![Average Sleep Hours Screenshot](image/AveSlleepHrs.PNG)
 
 ### Average Study Hours
 
-![Dashboard Screenshot](image/AveStudyHrs.PNG)
+![Average Study Hours Screenshot](image/AveStudyHrs.PNG)
 
 ### Average Social Media Hours
 
-![Dashboard Screenshot](image/AveSocMedHrs.PNG)
+![Average Social Media Hours Screenshot](image/AveSocMedHrs.PNG)
 
 ### Average Physical Activity
 
-![Dashboard Screenshot](image/AvePhcAct.PNG)
+![Average Physical Activity Screenshot](image/AvePhcAct.PNG)
 
 ### Average Stress Level
 
-![Dashboard Screenshot](image/AveStrsLvl.PNG)
+![Average Stress Level Screenshot](image/AveStrsLvl.PNG)
 
 ### Depressed Students
 
-![Dashboard Screenshot](image/DprsStd.PNG)
+![Depressed Students Screenshot](image/DprsStd.PNG)
 
 ### Depression Rate
 
-![Dashboard Screenshot](image/DprsRt.PNG)
+![Depression Rate Screenshot](image/DprsRt.PNG)
 
 ## Calculated Columns
 
@@ -230,27 +233,27 @@ The following calculated columns were created to make the dashboard easier to in
 
 ### Depression Label
 
-![Dashboard Screenshot](image/DprsLbl.PNG)
+![Depression Label Screenshot](image/DprsLbl.PNG)
 
 ### Sleep Group
 
-![Dashboard Screenshot](image/SlpGrp.PNG)
+![Sleep Group Screenshot](image/SlpGrp.PNG)
 
 ### Study Group
 
-![Dashboard Screenshot](image/StudGrp.PNG)
+![Study Group Screenshot](image/StudGrp.PNG)
 
 ### Social Media Group
 
-![Dashboard Screenshot](image/SocMedGrp.PNG)
+![Social Media Group Screenshot](image/SocMedGrp.PNG)
 
 ### Activity Group
 
-![Dashboard Screenshot](image/ActGrp.PNG)
+![Activity Group Screenshot](image/ActGrp.PNG)
 
 ### Stress Group
 
-![Dashboard Screenshot](image/StrssGrp.PNG)
+![Stress Group Screenshot](image/StrssGrp.PNG)
 
 ---
 
