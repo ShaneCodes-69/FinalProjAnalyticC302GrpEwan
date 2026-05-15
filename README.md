@@ -24,6 +24,8 @@ To develop an interactive Power BI dashboard that provides descriptive insights 
 
 ## 2. Data Collection Procedure
 
+
+
 The dataset used in this project was provided as a CSV file named:
 
 ```text
@@ -33,6 +35,8 @@ student_lifestyle_100k.csv
 The file was imported into Power BI Desktop for analysis and dashboard development. Since the project uses a provided dataset, the data collection procedure focused on acquiring, importing, validating, and preparing the dataset for modeling and visualization.
 
 ### Data Collection Steps
+
+
 
 | Step | Description |
 |---|---|
@@ -46,6 +50,7 @@ The file was imported into Power BI Desktop for analysis and dashboard developme
 ---
 
 ## 2.a. Raw Dataset Profile
+
 
 The original dataset contains student-level information about demographics, lifestyle habits, academic performance, stress level, and depression status.
 
@@ -100,18 +105,7 @@ However, the cleaning and preparation process was still documented using the CLE
 
 ### CLEAN Framework Documentation
 
-| CLEAN Step | Cleaning / Preparation Task | Action Performed | Result / Output |
-|---|---|---|---|
-| C - Check data quality | Checked for missing values in all columns | Used column profiling and validation in Power BI | No missing values were found |
-| C - Check data quality | Checked the number of rows and columns | Verified the dataset profile | Dataset contains 100,000 rows and 11 columns |
-| L - Look for duplicates and inconsistencies | Checked for duplicate student records | Verified duplicate rows using `Student_ID` and full-row checks | No duplicate rows were found |
-| L - Look for duplicates and inconsistencies | Checked categorical fields such as Gender and Department | Reviewed unique values | Categories were consistent and usable |
-| E - Evaluate data types | Reviewed data types for each column | Ensured numeric, text, and Boolean columns were correctly interpreted | Fields were appropriate for analysis |
-| A - Apply transformations | Renamed imported table | Renamed raw table to `Fact_Table` for easier DAX writing | Clearer naming convention was used |
-| A - Apply transformations | Created grouped categories | Created Sleep Group, Study Group, Social Media Group, Activity Group, and Stress Group | Numeric values became easier to interpret in charts |
-| A - Apply transformations | Created Depression Label | Converted TRUE/FALSE depression values into readable labels | Dashboard labels became easier to understand |
-| N - Normalize and model | Created dimension and fact tables | Built Student dimension, Department dimension, and Fact table | Dataset was organized into a snowflake schema |
-| N - Normalize and model | Created relationships | Connected dimension tables to the fact table using keys | Model supports filtering and interactive analysis |
+
 
 ### Cleaning Decision
 
@@ -120,6 +114,8 @@ Because the dataset had no missing values, no duplicate rows, and no major incon
 ---
 
 ## 4. Data Model: Snowflake Schema
+
+![Data Model Screenshot](image/Schema.png)
 
 The data model uses a snowflake schema. This design separates descriptive student and department information into dimension tables, while measurable academic and lifestyle values are stored in the fact table.
 
