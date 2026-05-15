@@ -190,69 +190,39 @@ The following DAX measures were created in Power BI.
 
 ### Total Students
 
-```DAX
-Total Students = DISTINCTCOUNT('Fact_Table'[Student_ID])
-```
+![Dashboard Screenshot](image/TotlStdn.PNG)
 
 ### Average CGPA
 
-```DAX
-Average CGPA = AVERAGE('Fact_Table'[CGPA])
-```
+![Dashboard Screenshot](image/AveCGPA.PNG)
 
 ### Average Sleep Hours
 
-```DAX
-Average Sleep Hours = AVERAGE('Fact_Table'[Sleep_Duration])
-```
+![Dashboard Screenshot](image/AveSlleepHrs.PNG)
 
 ### Average Study Hours
 
-```DAX
-Average Study Hours = AVERAGE('Fact_Table'[Study_Hours])
-```
+![Dashboard Screenshot](image/AveStudyHrs.PNG)
 
 ### Average Social Media Hours
 
-```DAX
-Average Social Media Hours = AVERAGE('Fact_Table'[Social_Media_Hours])
-```
+![Dashboard Screenshot](image/AveSocMedHrs.PNG)
 
 ### Average Physical Activity
 
-```DAX
-Average Physical Activity = AVERAGE('Fact_Table'[Physical_Activity])
-```
+![Dashboard Screenshot](image/AvePhcAct.PNG)
 
 ### Average Stress Level
 
-```DAX
-Average Stress Level = AVERAGE('Fact_Table'[Stress_Level])
-```
+![Dashboard Screenshot](image/AveStrsLvl.PNG)
 
 ### Depressed Students
 
-```DAX
-Depressed Students =
-CALCULATE(
-    [Total Students],
-    'Fact_Table'[Depression] = TRUE()
-)
-```
+![Dashboard Screenshot](image/DprsStd.PNG)
 
 ### Depression Rate
 
-```DAX
-Depression Rate =
-DIVIDE(
-    [Depressed Students],
-    [Total Students]
-)
-```
-
-The `Depression Rate` measure should be formatted as a percentage.
-
----
+![Dashboard Screenshot](image/DprsRt.PNG)
 
 ## Calculated Columns
 
@@ -260,74 +230,27 @@ The following calculated columns were created to make the dashboard easier to in
 
 ### Depression Label
 
-```DAX
-Depression Label =
-IF(
-    'Fact_Table'[Depression] = TRUE(),
-    "Depressed",
-    "Not Depressed"
-)
-```
+![Dashboard Screenshot](image/DprsLbl.PNG)
 
 ### Sleep Group
 
-```DAX
-Sleep Group =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Sleep_Duration] < 6, "Low sleep (<6h)",
-    'Fact_Table'[Sleep_Duration] <= 8, "Healthy sleep (6-8h)",
-    "High sleep (>8h)"
-)
-```
+![Dashboard Screenshot](image/SlpGrp.PNG)
 
 ### Study Group
 
-```DAX
-Study Group =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Study_Hours] < 3, "Low study (<3h)",
-    'Fact_Table'[Study_Hours] <= 6, "Medium study (3-6h)",
-    "High study (>6h)"
-)
-```
+![Dashboard Screenshot](image/StudGrp.PNG)
 
 ### Social Media Group
 
-```DAX
-Social Media Group =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Social_Media_Hours] < 2, "Low social media (<2h)",
-    'Fact_Table'[Social_Media_Hours] <= 5, "Moderate social media (2-5h)",
-    "High social media (>5h)"
-)
-```
+![Dashboard Screenshot](image/SocMedGrp.PNG)
 
 ### Activity Group
 
-```DAX
-Activity Group =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Physical_Activity] < 60, "Low activity (<60 mins)",
-    'Fact_Table'[Physical_Activity] <= 120, "Moderate activity (60-120 mins)",
-    "High activity (>120 mins)"
-)
-```
+![Dashboard Screenshot](image/ActGrp.PNG)
 
 ### Stress Group
 
-```DAX
-Stress Group =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Stress_Level] <= 3, "Low stress",
-    'Fact_Table'[Stress_Level] <= 6, "Medium stress",
-    "High stress"
-)
-```
+![Dashboard Screenshot](image/StrssGrp.PNG)
 
 ---
 
@@ -364,24 +287,3 @@ Depressed students have a lower average CGPA and higher average stress level com
 **Recommendation:** Academic advisers and student support offices should consider wellbeing indicators when designing student intervention programs.
 
 ---
-
-## 8. Submission Checklist
-
-The following files and links should be included in the final GitHub submission.
-
-| Requirement | Status / File |
-|---|---|
-| Dataset | `student_lifestyle_100k.csv` |
-| Power BI File | `.pbix` file |
-| Documentation | `README.md` or `.md` documentation file |
-| Dashboard Screenshot | `dashboard.png` |
-| Published Power BI Service Link | Add published dashboard link here |
-| GitHub Repository Link | Add GitHub repository link here |
-
----
-
-## Conclusion
-
-The Student Lifestyle, Academic Performance & Wellbeing Dashboard provides a clear and meaningful analysis of student behavior and wellbeing. The dataset was already clean, so the project proceeded from validation to data modeling and dashboard development.
-
-A snowflake schema was used to organize the dataset into student, department, and fact tables. Descriptive analytics were applied through KPIs, grouped comparisons, and interactive visuals. The final dashboard helps users understand how stress, sleep, study habits, and social media usage are related to student academic performance and depression status.
