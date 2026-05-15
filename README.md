@@ -179,15 +179,10 @@ The dashboard was developed in Power BI and includes KPIs, filters, interactivit
 | Depression Risk by Stress Level | Bar Chart | Shows depression rate by stress group |
 | Lifestyle Summary by Depression Status | Matrix | Compares lifestyle metrics between depressed and not depressed students |
 
-### Recommended Dashboard Screenshot
 
-If this documentation is uploaded to GitHub, place the dashboard screenshot in the repository and reference it here:
 
-```markdown
-![Dashboard Screenshot](dashboard.png)
-```
+![Dashboard Screenshot](image/dashboard.png)
 
----
 
 ## Power BI Measures
 
