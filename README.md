@@ -1,88 +1,272 @@
-# Student Lifestyle, Academic Performance and Wellbeing Dashboard Documentation
+# Student Lifestyle, Academic Performance & Wellbeing Dashboard
 
-## 1. Dashboard Overview
+## 1. Project Description / Overview
 
-This Power BI dashboard analyzes the relationship between student lifestyle factors, academic performance, stress level, and depression status.
+This project presents a Power BI dashboard that analyzes student lifestyle, academic performance, and wellbeing indicators. The dashboard focuses on how sleep duration, study hours, social media usage, physical activity, and stress level relate to CGPA and depression status.
 
-The dashboard is designed to be simple, clean, and useful. Instead of focusing only on demographic information, it focuses on meaningful lifestyle indicators such as sleep duration, study hours, social media usage, physical activity, stress level, CGPA, and depression status.
+The dashboard is designed to be simple, readable, and decision-oriented. It uses summary KPIs, interactive filters, and visual comparisons to help identify lifestyle patterns that may affect student academic performance and mental wellbeing.
 
-The main purpose of the dashboard is to help users understand how student habits and wellbeing indicators may be connected to academic performance and mental health.
+### Main Objective
 
----
+To develop an interactive Power BI dashboard that provides descriptive insights about student lifestyle patterns and their relationship with academic performance and wellbeing.
 
-## 2. Data Source
+### Key Questions Answered
 
-The dataset used for this dashboard is:
-
-```text
-student_lifestyle_100k.csv
-```
-
-After importing the data into Power BI, the table was renamed to:
-
-```text
-Fact_Table
-```
-
-The dataset contains student-level records with lifestyle, academic, demographic, and wellbeing information.
-
-### Main Fields Used
-
-| Field Name | Description |
-|---|---|
-| Student_ID | Unique identifier for each student |
-| Gender | Student gender |
-| Age | Student age |
-| Department | Student department |
-| CGPA | Academic performance score |
-| Study_Hours | Daily study hours |
-| Sleep_Duration | Daily sleep duration in hours |
-| Social_Media_Hours | Daily social media usage in hours |
-| Physical_Activity | Physical activity duration in minutes |
-| Stress_Level | Student stress level |
-| Depression | Depression status, shown as TRUE or FALSE |
-
----
-
-## 3. Dashboard Objective
-
-The dashboard aims to answer the following questions:
-
-1. What is the overall academic and wellbeing condition of the students?
+1. What is the overall academic and wellbeing profile of the students?
 2. What percentage of students are marked as depressed?
 3. How does stress level relate to depression rate?
 4. How does sleep duration relate to stress level?
 5. How does study time relate to CGPA?
 6. How does social media usage relate to CGPA?
-7. How do lifestyle indicators compare between depressed and not depressed students?
+7. How do lifestyle indicators differ between depressed and not depressed students?
 
 ---
 
-## 4. Key Performance Indicators
+## 2. Data Collection Procedure
 
-The dashboard uses five main KPI cards.
+The dataset used in this project was provided as a CSV file named:
 
-| KPI | Purpose |
+```text
+student_lifestyle_100k.csv
+```
+
+The file was imported into Power BI Desktop for analysis and dashboard development. Since the project uses a provided dataset, the data collection procedure focused on acquiring, importing, validating, and preparing the dataset for modeling and visualization.
+
+### Data Collection Steps
+
+| Step | Description |
 |---|---|
-| Total Students | Shows the total number of students in the dataset |
-| Average CGPA | Shows the overall academic performance level |
-| Average Stress Level | Shows the general stress condition of students |
-| Depression Rate | Shows the percentage of students marked as depressed |
-| Average Sleep Hours | Shows the average sleep duration of students |
+| 1 | Obtained the raw CSV dataset named `student_lifestyle_100k.csv`. |
+| 2 | Imported the CSV file into Power BI Desktop. |
+| 3 | Reviewed the column names, data types, and sample records. |
+| 4 | Checked the dataset for missing values, duplicates, and inconsistencies. |
+| 5 | Confirmed that the dataset was already clean and ready for modeling. |
+| 6 | Proceeded to data modeling by creating dimension and fact tables. |
 
-### KPI Summary from the Dataset
+---
+
+## 2.a. Raw Dataset Profile
+
+The original dataset contains student-level information about demographics, lifestyle habits, academic performance, stress level, and depression status.
+
+### Dataset Summary
+
+| Item | Description |
+|---|---:|
+| File Name | `student_lifestyle_100k.csv` |
+| Number of Records | 100,000 |
+| Number of Columns | 11 |
+| Granularity | One row per student |
+| Missing Values | None detected |
+| Duplicate Rows | None detected |
+| Main Analytical Focus | Lifestyle, CGPA, stress, and depression |
+
+### Original Dataset Fields
+
+| Field Name | Description | Data Type / Example |
+|---|---|---|
+| Student_ID | Unique student identifier | Whole number |
+| Age | Age of the student | Whole number |
+| Gender | Gender of the student | Text |
+| Department | Department or academic field | Text |
+| CGPA | Academic performance measure | Decimal number |
+| Sleep_Duration | Daily sleep duration in hours | Decimal number |
+| Study_Hours | Daily study hours | Decimal number |
+| Social_Media_Hours | Daily social media usage in hours | Decimal number |
+| Physical_Activity | Daily physical activity in minutes | Whole number |
+| Stress_Level | Student stress level | Whole number |
+| Depression | Depression status | Boolean, TRUE/FALSE |
+
+### Initial Dataset Statistics
 
 | Metric | Value |
 |---|---:|
 | Total Students | 100,000 |
 | Average CGPA | 2.90 |
+| Average Sleep Duration | 7.00 hours |
+| Average Study Hours | 4.51 hours |
+| Average Social Media Usage | 3.50 hours |
+| Average Physical Activity | 74.35 minutes |
 | Average Stress Level | 4.13 |
 | Depression Rate | 10.06% |
-| Average Sleep Hours | 7.00 |
 
 ---
 
-## 5. Power BI Measures
+## 3. Data Cleaning Process / Documentation
+
+After checking the dataset, it was found that the data was already clean. Therefore, major cleaning tasks such as missing value imputation, duplicate removal, and correction of inconsistent records were not required.
+
+However, the cleaning and preparation process was still documented using the CLEAN framework as a guide. The main preparation work focused on validation, data transformation, and data modeling.
+
+### CLEAN Framework Documentation
+
+| CLEAN Step | Cleaning / Preparation Task | Action Performed | Result / Output |
+|---|---|---|---|
+| C - Check data quality | Checked for missing values in all columns | Used column profiling and validation in Power BI | No missing values were found |
+| C - Check data quality | Checked the number of rows and columns | Verified the dataset profile | Dataset contains 100,000 rows and 11 columns |
+| L - Look for duplicates and inconsistencies | Checked for duplicate student records | Verified duplicate rows using `Student_ID` and full-row checks | No duplicate rows were found |
+| L - Look for duplicates and inconsistencies | Checked categorical fields such as Gender and Department | Reviewed unique values | Categories were consistent and usable |
+| E - Evaluate data types | Reviewed data types for each column | Ensured numeric, text, and Boolean columns were correctly interpreted | Fields were appropriate for analysis |
+| A - Apply transformations | Renamed imported table | Renamed raw table to `Fact_Table` for easier DAX writing | Clearer naming convention was used |
+| A - Apply transformations | Created grouped categories | Created Sleep Group, Study Group, Social Media Group, Activity Group, and Stress Group | Numeric values became easier to interpret in charts |
+| A - Apply transformations | Created Depression Label | Converted TRUE/FALSE depression values into readable labels | Dashboard labels became easier to understand |
+| N - Normalize and model | Created dimension and fact tables | Built Student dimension, Department dimension, and Fact table | Dataset was organized into a snowflake schema |
+| N - Normalize and model | Created relationships | Connected dimension tables to the fact table using keys | Model supports filtering and interactive analysis |
+
+### Cleaning Decision
+
+Because the dataset had no missing values, no duplicate rows, and no major inconsistencies, the cleaning phase was skipped after validation. The project proceeded directly to data transformation and data modeling.
+
+---
+
+## 4. Data Model: Snowflake Schema
+
+The data model uses a snowflake schema. This design separates descriptive student and department information into dimension tables, while measurable academic and lifestyle values are stored in the fact table.
+
+### Reason for Using Snowflake Schema
+
+A snowflake schema was used because the department information was separated from the student dimension into its own department dimension table. This reduces repeated department values and improves model organization.
+
+### Dimension and Fact Tables
+
+#### Student_dim
+
+The `Student_dim` table stores student demographic information.
+
+| Column | Description |
+|---|---|
+| Student_ID | Unique student key |
+| Age | Student age |
+| Gender | Student gender |
+| Department_ID | Foreign key connected to `Department_Dim` |
+
+> Note: The original student attributes included `Department`. During modeling, Department was separated into `Department_Dim`, and `Department_ID` was used to connect the student table to the department table.
+
+#### Department_Dim
+
+The `Department_Dim` table stores department lookup values.
+
+| Column | Description |
+|---|---|
+| Department_ID | Unique department key |
+| Department | Department name |
+
+#### Fact_Table
+
+The `Fact_Table` stores measurable student lifestyle, academic, and wellbeing values.
+
+| Column | Description |
+|---|---|
+| Student_ID | Foreign key connected to `Student_dim` |
+| CGPA | Academic performance measure |
+| Sleep_Duration | Daily sleep duration in hours |
+| Study_Hours | Daily study hours |
+| Social_Media_Hours | Daily social media usage in hours |
+| Physical_Activity | Daily physical activity in minutes |
+| Stress_Level | Student stress level |
+| Depression | Depression status |
+
+### Model Relationships
+
+| From Table | Key | To Table | Key | Relationship Type |
+|---|---|---|---|---|
+| Department_Dim | Department_ID | Student_dim | Department_ID | One-to-many |
+| Student_dim | Student_ID | Fact_Table | Student_ID | One-to-one in this dataset, logically one-to-many for fact analysis |
+
+### Relationship Flow
+
+```text
+Department_Dim
+      |
+      | Department_ID
+      v
+Student_dim
+      |
+      | Student_ID
+      v
+Fact_Table
+```
+
+### Analytical Method Used
+
+This project applies **descriptive analytics**. The dashboard summarizes student data using KPIs, averages, percentages, grouped categories, and visual comparisons.
+
+Examples of descriptive analytics used:
+
+| Analysis | Description |
+|---|---|
+| KPI Summary | Shows total students, average CGPA, average stress level, depression rate, and average sleep hours |
+| Group Comparison | Compares CGPA, stress, and depression rate across lifestyle groups |
+| Depression Distribution | Shows the proportion of depressed and not depressed students |
+| Lifestyle Comparison | Compares lifestyle indicators between depressed and not depressed students |
+
+---
+
+## 5. Dashboard Wireframe Layout Following the DASH Framework
+
+The dashboard design follows the DASH framework to make sure the report is purposeful, organized, and easy to understand.
+
+### DASH Framework Application
+
+| DASH Step | Application in This Dashboard |
+|---|---|
+| D - Define the purpose | The dashboard focuses on student lifestyle, academic performance, stress, and depression status. |
+| A - Analyze the key metrics | The main metrics are Total Students, Average CGPA, Average Stress Level, Depression Rate, and Average Sleep Hours. |
+| S - Sketch the layout | The layout uses a top KPI row, a left-side slicer, and six main visuals arranged in a clean grid. |
+| H - Highlight insights | Important patterns are highlighted through charts about stress, depression, sleep, study time, and social media usage. |
+
+### Wireframe Layout
+
+```text
++--------------------------------------------------------------------------------+
+| Student Lifestyle, Academic Performance & Wellbeing Dashboard                   |
++--------------------------------------------------------------------------------+
+| Department Slicer | Total Students | Avg CGPA | Avg Stress | Depression | Sleep |
+|                   |                |          |            | Rate       | Hours |
+|-------------------+------------------------------------------------------------|
+|                   | Depression Distribution     | CGPA by Social Media Usage  |
+|                   |-----------------------------+------------------------------|
+|                   | Stress by Sleep Duration    | CGPA by Study Group          |
+|                   |-----------------------------+------------------------------|
+|                   | Lifestyle Summary by        | Depression Risk by Stress    |
+|                   | Depression Status           | Level                        |
++--------------------------------------------------------------------------------+
+```
+
+---
+
+## 6. Visualization & Dashboard
+
+The dashboard was developed in Power BI and includes KPIs, filters, interactivity, and readable charts.
+
+### Dashboard Components
+
+| Component | Visual Type | Purpose |
+|---|---|---|
+| Total Students | KPI Card | Shows total number of students |
+| Average CGPA | KPI Card | Shows overall academic performance |
+| Average Stress Level | KPI Card | Shows general stress condition |
+| Depression Rate | KPI Card | Shows percentage of students marked as depressed |
+| Average Sleep Hours | KPI Card | Shows average sleep duration |
+| Department Filter | Slicer | Allows filtering by department |
+| Depression Distribution | Donut Chart | Shows depressed vs not depressed students |
+| CGPA by Social Media Usage | Clustered Column Chart | Shows how social media usage relates to CGPA |
+| Stress Level by Sleep Duration | Clustered Column Chart | Shows how sleep duration relates to stress |
+| CGPA by Study Group | Clustered Column Chart | Shows how study hours relate to CGPA |
+| Depression Risk by Stress Level | Bar Chart | Shows depression rate by stress group |
+| Lifestyle Summary by Depression Status | Matrix | Compares lifestyle metrics between depressed and not depressed students |
+
+### Recommended Dashboard Screenshot
+
+If this documentation is uploaded to GitHub, place the dashboard screenshot in the repository and reference it here:
+
+```markdown
+![Dashboard Screenshot](dashboard.png)
+```
+
+---
+
+## Power BI Measures
 
 The following DAX measures were created in Power BI.
 
@@ -148,13 +332,13 @@ DIVIDE(
 )
 ```
 
-The Depression Rate measure should be formatted as a percentage in Power BI.
+The `Depression Rate` measure should be formatted as a percentage.
 
 ---
 
-## 6. Calculated Columns
+## Calculated Columns
 
-Calculated columns were created to group numeric lifestyle variables into simple categories. These categories make the dashboard easier to understand.
+The following calculated columns were created to make the dashboard easier to interpret.
 
 ### Depression Label
 
@@ -229,292 +413,57 @@ SWITCH(
 
 ---
 
-## 7. Sort Columns
+## 7. Insights and Recommendations
 
-Sort columns were created so that grouped categories appear in a logical order instead of alphabetical order.
+### Insight 1: High stress is strongly related to higher depression rate
 
-### Sleep Group Sort
+Students in the high stress group have a much higher depression rate compared with students in the low and medium stress groups.
 
-```DAX
-Sleep Group Sort =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Sleep_Duration] < 6, 1,
-    'Fact_Table'[Sleep_Duration] <= 8, 2,
-    3
-)
-```
+**Recommendation:** Schools should create stress monitoring programs, counseling support, and wellness activities targeted at high-stress students.
 
-### Study Group Sort
+### Insight 2: Low sleep is linked with higher stress
 
-```DAX
-Study Group Sort =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Study_Hours] < 3, 1,
-    'Fact_Table'[Study_Hours] <= 6, 2,
-    3
-)
-```
+Students with low sleep have a higher average stress level compared with students with healthy or high sleep duration.
 
-### Social Media Group Sort
+**Recommendation:** Promote sleep awareness campaigns and encourage students to manage study schedules, screen time, and rest periods properly.
 
-```DAX
-Social Media Group Sort =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Social_Media_Hours] < 2, 1,
-    'Fact_Table'[Social_Media_Hours] <= 5, 2,
-    3
-)
-```
+### Insight 3: Higher study hours are associated with better CGPA
 
-### Stress Group Sort
+Students in the high study group tend to have a higher average CGPA compared with students in the low and medium study groups.
 
-```DAX
-Stress Group Sort =
-SWITCH(
-    TRUE(),
-    'Fact_Table'[Stress_Level] <= 3, 1,
-    'Fact_Table'[Stress_Level] <= 6, 2,
-    3
-)
-```
+**Recommendation:** Provide academic support programs, study planning workshops, and peer tutoring for students with low study hours.
 
-In Power BI, each group column should be sorted by its matching sort column.
+### Insight 4: High social media usage is associated with lower CGPA
 
-Example:
+Students with high social media usage show lower average CGPA compared with students with low or moderate social media usage.
 
-```text
-Sleep Group -> Sort by column -> Sleep Group Sort
-```
+**Recommendation:** Encourage balanced digital habits and provide digital wellbeing sessions to help students manage social media time.
+
+### Insight 5: Depression status is connected with academic and lifestyle differences
+
+Depressed students have a lower average CGPA and higher average stress level compared with not depressed students.
+
+**Recommendation:** Academic advisers and student support offices should consider wellbeing indicators when designing student intervention programs.
 
 ---
 
-## 8. Dashboard Layout
+## 8. Submission Checklist
 
-The dashboard uses a one-page layout.
+The following files and links should be included in the final GitHub submission.
 
-```text
-Title: Student Lifestyle, Academic Performance and Wellbeing Dashboard
-
-Top Row:
-[Total Students] [Average CGPA] [Average Stress Level] [Depression Rate] [Average Sleep Hours]
-
-Left Side:
-Department slicer
-
-Main Visuals:
-1. Depression Distribution
-2. CGPA by Social Media Usage
-3. Stress Level by Sleep Duration
-4. CGPA by Study Group
-5. Depression Risk by Stress Level
-6. Lifestyle Summary by Depression Status
-```
-
----
-
-## 9. Dashboard Visuals
-
-### Visual 1: Depression Distribution
-
-**Visual Type:** Donut Chart
-
-| Field | Usage |
+| Requirement | Status / File |
 |---|---|
-| Depression Label | Legend |
-| Total Students | Values |
-
-This visual shows the proportion of students who are depressed and not depressed. It gives a quick overview of the depression distribution in the dataset.
-
-Recommended formatting:
-
-```text
-Data labels: On
-Detail labels: Category + Percent of total
-```
+| Dataset | `student_lifestyle_100k.csv` |
+| Power BI File | `.pbix` file |
+| Documentation | `README.md` or `.md` documentation file |
+| Dashboard Screenshot | `dashboard.png` |
+| Published Power BI Service Link | Add published dashboard link here |
+| GitHub Repository Link | Add GitHub repository link here |
 
 ---
 
-### Visual 2: CGPA by Social Media Usage
+## Conclusion
 
-**Visual Type:** Clustered Column Chart
+The Student Lifestyle, Academic Performance & Wellbeing Dashboard provides a clear and meaningful analysis of student behavior and wellbeing. The dataset was already clean, so the project proceeded from validation to data modeling and dashboard development.
 
-| Field | Usage |
-|---|---|
-| Social Media Group | X-axis |
-| Average CGPA | Y-axis |
-
-This visual shows how average CGPA changes across different levels of social media usage.
-
-This is useful because high social media usage appears to be associated with lower average CGPA.
-
----
-
-### Visual 3: Stress Level by Sleep Duration
-
-**Visual Type:** Clustered Column Chart
-
-| Field | Usage |
-|---|---|
-| Sleep Group | X-axis |
-| Average Stress Level | Y-axis |
-
-This visual shows the relationship between sleep duration and stress level.
-
-This is useful because students with low sleep generally show a higher stress level compared with students with healthy sleep.
-
----
-
-### Visual 4: CGPA by Study Group
-
-**Visual Type:** Clustered Column Chart
-
-| Field | Usage |
-|---|---|
-| Study Group | X-axis |
-| Average CGPA | Y-axis |
-
-This visual shows how study time relates to academic performance.
-
-Students with higher study hours tend to have a slightly higher average CGPA.
-
----
-
-### Visual 5: Depression Risk by Stress Level
-
-**Visual Type:** Bar Chart
-
-| Field | Usage |
-|---|---|
-| Stress Group | Y-axis |
-| Depression Rate | X-axis |
-
-This is one of the most important visuals in the dashboard.
-
-It shows that students with high stress have a much higher depression rate compared with students in low or medium stress groups.
-
-Recommended formatting:
-
-```text
-Depression Rate format: Percentage
-Decimal places: 1 or 2
-```
-
----
-
-### Visual 6: Lifestyle Summary by Depression Status
-
-**Visual Type:** Matrix
-
-| Field | Usage |
-|---|---|
-| Depression Label | Rows |
-| Total Students | Values |
-| Average CGPA | Values |
-| Average Sleep Hours | Values |
-| Average Study Hours | Values |
-| Average Social Media Hours | Values |
-| Average Physical Activity | Values |
-| Average Stress Level | Values |
-
-This matrix compares the lifestyle and academic indicators of depressed and not depressed students.
-
-This visual is more meaningful than a department summary because it directly supports the main theme of the dashboard: student lifestyle, performance, and wellbeing.
-
----
-
-## 10. Slicer
-
-The dashboard includes a Department slicer.
-
-The slicer allows users to filter the dashboard by department, such as:
-
-```text
-Arts
-Business
-Engineering
-Medical
-Science
-```
-
-This keeps the dashboard interactive while still keeping the main visuals focused on lifestyle and wellbeing.
-
-Optional slicers that can also be added:
-
-```text
-Gender
-Age
-Depression Label
-```
-
----
-
-## 11. Design Choices
-
-The dashboard uses a dark blue and white theme to create a clean academic-style design.
-
-### Design decisions
-
-| Design Element | Reason |
-|---|---|
-| Dark header | Makes the dashboard title stand out |
-| Light KPI cards | Makes key numbers easy to read |
-| Simple bar and column charts | Keeps the dashboard easy to understand |
-| Limited slicers | Avoids unnecessary complexity |
-| One-page layout | Makes the dashboard simple and fast to read |
-
----
-
-## 12. Main Insights
-
-Based on the dashboard, the following insights can be observed:
-
-1. The dataset contains 100,000 student records.
-2. The average CGPA is 2.90.
-3. The average stress level is 4.13.
-4. The average sleep duration is 7.00 hours.
-5. The overall depression rate is 10.06%.
-6. Students with high stress have a noticeably higher depression rate.
-7. Students with low sleep show higher average stress.
-8. Students with higher study hours tend to have slightly higher CGPA.
-9. Students with high social media usage tend to have lower average CGPA.
-10. Comparing depressed and not depressed students provides a useful summary of lifestyle and wellbeing differences.
-
----
-
-## 13. How to Use the Dashboard
-
-Users can interact with the dashboard by selecting a department from the slicer. Once a department is selected, all visuals update automatically.
-
-The dashboard can be used to quickly compare lifestyle patterns and identify student groups that may need more academic or wellbeing support.
-
-Example use cases:
-
-```text
-- Check whether high-stress students have higher depression rates.
-- Compare CGPA across different study-hour groups.
-- Analyze whether social media usage is related to lower CGPA.
-- Compare lifestyle patterns between depressed and not depressed students.
-```
-
----
-
-## 14. Limitations
-
-This dashboard shows relationships and patterns in the data, but it does not prove cause and effect.
-
-For example, high social media usage may be associated with lower CGPA, but the dashboard cannot prove that social media directly causes lower academic performance.
-
-The dashboard should be used for descriptive analysis and decision support, not as a final medical or psychological diagnosis tool.
-
----
-
-## 15. Conclusion
-
-The Student Lifestyle, Academic Performance and Wellbeing Dashboard provides a simple but meaningful view of student behavior and wellbeing.
-
-The dashboard focuses on useful indicators such as CGPA, stress level, sleep duration, study hours, social media usage, and depression rate. It helps users understand how lifestyle patterns are connected with academic performance and mental wellbeing.
-
-The final design is intentionally simple, but every visual supports the main story of the dashboard.
+A snowflake schema was used to organize the dataset into student, department, and fact tables. Descriptive analytics were applied through KPIs, grouped comparisons, and interactive visuals. The final dashboard helps users understand how stress, sleep, study habits, and social media usage are related to student academic performance and depression status.
